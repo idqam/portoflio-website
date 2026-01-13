@@ -272,57 +272,56 @@ export default function ProjectsEditorial() {
                                                 </div>
                                             </div>
 
-                                            <div
-                                                className="overflow-hidden transition-all duration-300"
-                                                style={{
-                                                    maxHeight: isHovered ? "120px" : "0px",
-                                                    opacity: isHovered ? 1 : 0,
-                                                    marginTop: isHovered ? "8px" : "0px",
-                                                }}
-                                            >
-                                                <p className="font-sans text-xs text-[var(--text-muted)] leading-relaxed mb-3">
-                                                    {project.description}
-                                                </p>
+                                            <div className="relative mt-2 min-h-[24px]">
+                                                <div
+                                                    className="absolute inset-0 overflow-hidden transition-all duration-300"
+                                                    style={{
+                                                        opacity: isHovered ? 1 : 0,
+                                                        pointerEvents: isHovered ? "auto" : "none",
+                                                    }}
+                                                >
+                                                    <p className="font-sans text-xs text-[var(--text-muted)] leading-relaxed mb-3">
+                                                        {project.description}
+                                                    </p>
 
-                                                <div className="flex flex-wrap gap-1">
-                                                    {project.skills.map((skill) => (
+                                                    <div className="flex flex-wrap gap-1">
+                                                        {project.skills.map((skill) => (
+                                                            <span
+                                                                key={skill}
+                                                                className="font-mono text-[9px] px-1.5 py-0.5 border transition-colors duration-300"
+                                                                style={{
+                                                                    borderColor: accent,
+                                                                    color: accent,
+                                                                    backgroundColor: `${accent}08`,
+                                                                }}
+                                                            >
+                                                                {skill}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    className="absolute inset-0 flex flex-wrap gap-1.5 transition-all duration-300"
+                                                    style={{
+                                                        opacity: isHovered ? 0 : 1,
+                                                        pointerEvents: isHovered ? "none" : "auto",
+                                                    }}
+                                                >
+                                                    {project.skills.slice(0, 4).map((skill) => (
                                                         <span
                                                             key={skill}
-                                                            className="font-mono text-[9px] px-1.5 py-0.5 border transition-colors duration-300"
-                                                            style={{
-                                                                borderColor: accent,
-                                                                color: accent,
-                                                                backgroundColor: `${accent}08`,
-                                                            }}
+                                                            className="font-mono text-[9px] px-1.5 py-0.5 bg-[var(--secondary-bg)] text-[var(--text-muted)]"
                                                         >
                                                             {skill}
                                                         </span>
                                                     ))}
+                                                    {project.skills.length > 4 && (
+                                                        <span className="font-mono text-[9px] text-[var(--text-muted)]">
+                                                            +{project.skills.length - 4}
+                                                        </span>
+                                                    )}
                                                 </div>
-                                            </div>
-
-                                            <div
-                                                className="flex flex-wrap gap-1.5 transition-all duration-300"
-                                                style={{
-                                                    opacity: isHovered ? 0 : 1,
-                                                    height: isHovered ? "0px" : "auto",
-                                                    marginTop: isHovered ? "0px" : "8px",
-                                                    overflow: "hidden",
-                                                }}
-                                            >
-                                                {project.skills.slice(0, 4).map((skill) => (
-                                                    <span
-                                                        key={skill}
-                                                        className="font-mono text-[9px] px-1.5 py-0.5 bg-[var(--secondary-bg)] text-[var(--text-muted)]"
-                                                    >
-                                                        {skill}
-                                                    </span>
-                                                ))}
-                                                {project.skills.length > 4 && (
-                                                    <span className="font-mono text-[9px] text-[var(--text-muted)]">
-                                                        +{project.skills.length - 4}
-                                                    </span>
-                                                )}
                                             </div>
                                         </div>
 
