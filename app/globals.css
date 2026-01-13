@@ -1,25 +1,86 @@
 @import "tailwindcss";
 
 :root {
-  --background: black;
-  --foreground: white;
+  --background: #F8F7F4;
+  --foreground: #2C2C2C;
+  --secondary-bg: #EDEAE5;
+  --text-muted: #6B6B6B;
+  --accent-water: #7A9BA8;
+  --accent-amber: #C4956A;
+  --accent-lavender: #A89AB4;
+  --border-pencil: #D4D0C8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary-bg);
+  --color-muted: var(--text-muted);
+  --color-water: var(--accent-water);
+  --color-amber: var(--accent-amber);
+  --color-lavender: var(--accent-lavender);
+  --color-pencil: var(--border-pencil);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-space-grotesk);
+  --font-serif: var(--font-playfair);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-water);
+  color: var(--background);
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-pencil);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.overflow-x-auto {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-pencil) var(--secondary-bg);
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  height: 6px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: var(--secondary-bg);
+  border-radius: 3px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: var(--border-pencil);
+  border-radius: 3px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-water);
 }
