@@ -117,7 +117,7 @@ export default function Timeline() {
             <div className="w-2 h-2 rounded-full bg-lavender" />
           </div>
           <div className="flex-1 h-px bg-pencil" />
-          <h2 className="font-serif text-2xl md:text-3xl text-foreground px-4 md:px-6 py-2 border border-pencil bg-secondary text-center whitespace-nowrap">
+          <h2 className="font-serif text-2xl md:text-3xl text-foreground px-4 md:px-6 py-2  text-center whitespace-nowrap">
             Experience
           </h2>
           <div className="flex-1 h-[1px] bg-[var(--border-pencil)]" />

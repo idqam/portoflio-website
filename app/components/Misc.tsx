@@ -154,7 +154,7 @@ export default function Misc() {
   const [lockedId, setLockedId] = useState<string | null>(null);
 
   const activeCategory = categories.find(
-    (c) => c.id === (lockedId || activeId)
+    (c) => c.id === (lockedId || activeId),
   );
 
   const getSide = (id: string) => {
@@ -167,13 +167,13 @@ export default function Misc() {
   return (
     <section
       id="misc"
-      className="w-full relative py-24 bg-[var(--secondary-bg)] overflow-hidden min-h-screen flex flex-col items-center justify-center"
+      className="w-full relative py-24 overflow-hidden min-h-screen flex flex-col items-center justify-center"
     >
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-6 mb-12 pt-12 relative z-20">
-        <div className="flex items-center gap-4 text-[var(--foreground)] opacity-80">
-          <div className="flex-1 w-12 h-[1px] bg-[var(--border-pencil)]" />
+        <div className="flex items-center gap-4 text-foreground opacity-80">
+          <div className="flex-1 w-12 h-px bg-pencil" />
           <h2 className="font-serif text-3xl">Misc</h2>
-          <div className="flex-1 w-12 h-[1px] bg-[var(--border-pencil)]" />
+          <div className="flex-1 w-12 h-px bg-pencil" />
         </div>
 
         <div className="flex flex-col items-center gap-3 opacity-50">
@@ -195,16 +195,18 @@ export default function Misc() {
       </div>
 
       <div className="relative w-full flex items-center justify-center px-4">
-
-        {/* Left Content Area */}
-        <div className={`hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 max-w-sm w-full transition-all duration-700 justify-end z-10 ${activeSide === "left" ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8 pointer-events-none"
-          }`}>
+        <div
+          className={`hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 max-w-sm w-full transition-all duration-700 justify-end z-10 ${
+            activeSide === "left"
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 -translate-x-8 pointer-events-none"
+          }`}
+        >
           {activeCategory && activeSide === "left" && (
             <CategoryContent category={activeCategory} />
           )}
         </div>
 
-        {/* Center Flower */}
         <div className="relative z-20 shrink-0">
           <PolarLayout
             items={categories}
@@ -369,8 +371,10 @@ export default function Misc() {
                       style={{
                         fontSize: "18px",
                         color: isActive ? complementColor : "var(--text-muted)",
-                        textShadow: isActive ? "0 2px 10px rgba(0,0,0,0.1)" : "none",
-                        transform: `rotate(${textRotation}deg)`
+                        textShadow: isActive
+                          ? "0 2px 10px rgba(0,0,0,0.1)"
+                          : "none",
+                        transform: `rotate(${textRotation}deg)`,
                       }}
                     >
                       {category.label}
@@ -383,22 +387,23 @@ export default function Misc() {
         </div>
 
         {/* Right Content Area */}
-        <div className={`hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 max-w-sm w-full transition-all duration-700 justify-start z-10 ${activeSide === "right" ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8 pointer-events-none"
-          }`}>
+        <div
+          className={`hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 max-w-sm w-full transition-all duration-700 justify-start z-10 ${
+            activeSide === "right"
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-8 pointer-events-none"
+          }`}
+        >
           {activeCategory && activeSide === "right" && (
             <CategoryContent category={activeCategory} />
           )}
         </div>
-
       </div>
 
       {/* Mobile Content Fallback */}
       <div className="md:hidden w-full px-6 min-h-[300px] flex items-center justify-center mt-8">
-        {activeCategory && (
-          <CategoryContent category={activeCategory} />
-        )}
+        {activeCategory && <CategoryContent category={activeCategory} />}
       </div>
-
     </section>
   );
 }
@@ -412,8 +417,9 @@ function CategoryContent({ category }: { category: MiscCategory }) {
   };
 
   return (
-    <div className="bg-[var(--background)] border-2 border-[var(--border-pencil)] p-8 rounded-sm shadow-xl w-full relative overflow-hidden"
-      style={{ borderColor: 'var(--border-pencil)' }}
+    <div
+      className="bg-[var(--background)] border-2 border-[var(--border-pencil)] p-8 rounded-sm shadow-xl w-full relative overflow-hidden"
+      style={{ borderColor: "var(--border-pencil)" }}
     >
       <div
         className="absolute top-0 left-0 right-0 h-1 transition-colors duration-500"
