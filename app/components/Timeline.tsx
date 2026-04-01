@@ -107,23 +107,25 @@ export default function Timeline() {
   return (
     <section
       id="experience"
-      className="min-h-screen w-full pt-16 md:pt-24 pb-20 md:pb-24 bg-[var(--background)] flex flex-col justify-center"
+      className="min-h-screen w-full pt-16 md:pt-24 pb-20 md:pb-24 bg-background flex flex-col justify-center"
     >
       <div className="max-w-5xl mx-auto px-6 md:px-12 mb-8 md:mb-10">
         <div className="flex items-center gap-2 md:gap-4">
           <div className="flex items-center gap-1.5 shrink-0">
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-water)]" />
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-amber)]" />
-            <div className="w-2 h-2 rounded-full bg-[var(--accent-lavender)]" />
+            <div className="w-2 h-2 rounded-full bg-water" />
+            <div className="w-2 h-2 rounded-full bg-amber" />
+            <div className="w-2 h-2 rounded-full bg-lavender" />
           </div>
-          <div className="flex-1 h-[1px] bg-[var(--border-pencil)]" />
-          <h2 className="font-serif text-2xl md:text-3xl text-[var(--foreground)] px-4 md:px-6 py-2 border border-[var(--border-pencil)] bg-[var(--secondary-bg)] text-center whitespace-nowrap">
+          <div className="flex-1 h-px bg-pencil" />
+          <h2 className="font-serif text-2xl md:text-3xl text-foreground px-4 md:px-6 py-2 border border-pencil bg-secondary text-center whitespace-nowrap">
             Experience
           </h2>
           <div className="flex-1 h-[1px] bg-[var(--border-pencil)]" />
-          <span className="font-mono text-[9px] md:text-[10px] text-[var(--text-muted)] tracking-[0.15em] uppercase shrink-0">
-            2019 — Present
-          </span>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <div className="w-2 h-2 rounded-full bg-water" />
+            <div className="w-2 h-2 rounded-full bg-amber" />
+            <div className="w-2 h-2 rounded-full bg-lavender" />
+          </div>
         </div>
       </div>
 
@@ -208,7 +210,7 @@ export default function Timeline() {
                     onMouseEnter={() => setActiveExperience(exp.id)}
                     onMouseLeave={() => setActiveExperience(null)}
                   >
-                    <div className="font-mono text-xs font-medium text-[var(--text-muted)] tracking-wide text-center h-5 flex items-center justify-center gap-1">
+                    <div className="font-mono text-xs font-medium text-muted tracking-wide text-center h-5 flex items-center justify-center gap-1">
                       <span style={{ color: typeColor }}>{exp.yearStart}</span>
                       {exp.yearEnd && (
                         <>
@@ -240,7 +242,7 @@ export default function Timeline() {
                     </div>
 
                     <div
-                      className="w-[1px] transition-all duration-300"
+                      className="w-px transition-all duration-300"
                       style={{
                         height: isActive ? "28px" : "16px",
                         background: `linear-gradient(to bottom, ${typeColor}, transparent)`,
@@ -255,7 +257,7 @@ export default function Timeline() {
                       }}
                     >
                       <div
-                        className="relative bg-[var(--secondary-bg)] transition-all duration-300"
+                        className="relative bg-secondary transition-all duration-300"
                         style={{
                           borderWidth: "1px",
                           borderStyle: "solid",
