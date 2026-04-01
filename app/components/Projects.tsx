@@ -141,7 +141,7 @@ const projects: Project[] = [
     description:
       "This site. A Winter Study aesthetic emphasizing readability, quiet sophistication, and scholarly warmth. Built as an expression of design philosophy as much as technical capability.",
     year: "2025",
-    skills: ["Next.js", "Tailwind", "TypeScript", "Framer Motion"],
+    skills: ["Next.js", "Tailwind", "TypeScript"],
     status: "completed",
     accent: "amber",
     webLink: "/projects/portfolio",
@@ -231,7 +231,7 @@ export default function ProjectsEditorial() {
           <div className="absolute bottom-0 left-0 w-4 h-4 border-l-2 border-b-2 border-[var(--accent-amber)] -translate-x-[2px] translate-y-[2px]" />
           <div className="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-[var(--accent-water)] translate-x-[2px] translate-y-[2px]" />
 
-          <div className="flex flex-col gap-2" style={{ height: "420px" }}>
+          <div className="flex flex-col gap-2" style={{ height: "520px" }}>
             {visibleProjects.map((project, index) => {
               const isHovered = hoveredId === project.id;
               const isCompressed = hoveredId !== null && !isHovered;
@@ -261,6 +261,7 @@ export default function ProjectsEditorial() {
                           ? "0.5 1 0"
                           : "1 1 0",
                       minHeight: 0,
+                      maxHeight: isHovered ? "none" : "200px",
                       borderColor: isHovered ? accent : "var(--border-pencil)",
                       transform: isHovered
                         ? "translateX(8px) scale(1.01)"
@@ -275,7 +276,7 @@ export default function ProjectsEditorial() {
                   onMouseLeave={() => setHoveredId(null)}
                 >
                   <div
-                    className="absolute inset-0 transition-opacity duration-200"
+                    className="absolute inset-0 flex flex-col transition-opacity duration-200"
                     style={{ opacity: isCompressed ? 0 : 1 }}
                   >
                     <div
@@ -315,111 +316,17 @@ export default function ProjectsEditorial() {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between gap-4 mb-1">
-                          <div>
-                            <h3 className="font-serif text-sm md:text-base text-[var(--foreground)] leading-tight">
-                              {project.title}
-                            </h3>
-                            <p
-                              className="font-mono text-[10px] tracking-wide mt-0.5 transition-colors duration-300"
-                              style={{
-                                color: isHovered ? accent : "var(--text-muted)",
-                              }}
-                            >
-                              {project.subtitle}
-                            </p>
-                          </div>
-
-                          <div className="flex items-center gap-2 shrink-0">
-                            <span
-                              className="hidden sm:inline-block font-mono text-[9px] tracking-wide w-20 text-center py-0.5 border transition-colors duration-300"
-                              style={{
-                                borderColor: accent,
-                                color:
-                                  project.status === "ongoing"
-                                    ? accent
-                                    : "var(--text-muted)",
-                                backgroundColor:
-                                  project.status === "ongoing"
-                                    ? `${accent}10`
-                                    : "transparent",
-                              }}
-                              title="project status"
-                            >
-                              {statusLabels[project.status]}
-                            </span>
-
-                            {project.githubLink && (
-                              <IconLink
-                                href={project.githubLink}
-                                title="GitHub repository"
-                                accent={accent}
-                                isRowHovered={isHovered}
-                              >
-                                <svg
-                                  className="w-5 h-5"
-                                  viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                >
-                                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
-                                </svg>
-                              </IconLink>
-                            )}
-
-                            {project.demoLink && (
-                              <IconLink
-                                href={project.demoLink}
-                                title="Watch demo"
-                                accent={accent}
-                                isRowHovered={isHovered}
-                              >
-                                <svg
-                                  className="w-5 h-5"
-                                  viewBox="0 0 24 24"
-                                  fill="currentColor"
-                                >
-                                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                                </svg>
-                              </IconLink>
-                            )}
-
-                            <a
-                              href={project.webLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300 hover:ring-1 hover:ring-[var(--row-accent)]"
-                              style={{
-                                backgroundColor: isHovered
-                                  ? accent
-                                  : "transparent",
-                                border: `1px solid ${isHovered ? accent : "var(--border-pencil)"}`,
-                              }}
-                              title="website link"
-                            >
-                              <svg
-                                className="w-2.5 h-2.5 transition-all duration-300"
-                                style={{
-                                  color: isHovered
-                                    ? "var(--background)"
-                                    : "var(--text-muted)",
-                                  transform: isHovered
-                                    ? "translateX(1px)"
-                                    : "translateX(0)",
-                                }}
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M9 5l7 7-7 7"
-                                />
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
+                        <h3 className="font-serif text-sm md:text-base text-[var(--foreground)] leading-tight">
+                          {project.title}
+                        </h3>
+                        <p
+                          className="font-mono text-[10px] tracking-wide mt-0.5 transition-colors duration-300"
+                          style={{
+                            color: isHovered ? accent : "var(--text-muted)",
+                          }}
+                        >
+                          {project.subtitle}
+                        </p>
 
                         <div className="mt-2 flex flex-wrap gap-1.5">
                           {(isHovered
@@ -455,48 +362,75 @@ export default function ProjectsEditorial() {
                           )}
                         </div>
                       </div>
-
-                      <div
-                        className="hidden md:flex shrink-0 w-16 h-16 border overflow-hidden items-center justify-center transition-all duration-300"
-                        style={{
-                          borderColor: isHovered
-                            ? accent
-                            : "var(--border-pencil)",
-                          backgroundColor: isHovered
-                            ? `${accent}08`
-                            : "var(--secondary-bg)",
-                        }}
-                      >
-                        <div
-                          className="w-7 h-7 rounded-full border flex items-center justify-center transition-all duration-300"
-                          style={{
-                            borderColor: accent,
-                            backgroundColor: isHovered ? accent : "transparent",
-                          }}
-                        >
-                          <span
-                            className="font-serif text-xs transition-colors duration-300"
-                            style={{
-                              color: isHovered ? "var(--background)" : accent,
-                            }}
-                          >
-                            {project.title.charAt(0)}
-                          </span>
-                        </div>
-                      </div>
                     </div>
 
+                    {/* Description (hovered) */}
                     <div
-                      className="transition-opacity duration-300"
+                      className="flex-1 min-h-0 overflow-hidden transition-opacity duration-300"
                       style={{ opacity: isHovered ? 1 : 0 }}
                     >
                       <div
-                        className="mx-4 mb-4 pt-3 pb-3 border-t"
-                        style={{ borderColor: `${accent}40` }}
+                        className="border-t h-full"
+                        style={{ borderColor: `${accent}30` }}
                       >
-                        <p className="font-sans text-xs text-[var(--text-muted)] leading-relaxed">
+                        <p className="font-sans text-xs text-[var(--text-muted)] leading-relaxed px-4 md:px-5 py-3">
                           {project.description}
                         </p>
+                      </div>
+                    </div>
+
+                    {/* Bottom action strip */}
+                    <div
+                      className="mt-auto flex items-center justify-between px-4 md:px-5 py-2.5 border-t transition-colors duration-300"
+                      style={{ borderColor: isHovered ? `${accent}40` : "var(--border-pencil)" }}
+                    >
+                      <span
+                        className="font-mono text-[9px] tracking-wide transition-colors duration-300"
+                        style={{ color: isHovered ? accent : "var(--text-muted)" }}
+                      >
+                        {statusLabels[project.status]}
+                      </span>
+
+                      <div
+                        className="flex items-center gap-3 transition-all duration-300"
+                        style={{ opacity: isHovered ? 1 : 0 }}
+                      >
+                        {project.githubLink && (
+                          <IconLink
+                            href={project.githubLink}
+                            title="GitHub repository"
+                            accent={accent}
+                            isRowHovered={isHovered}
+                          >
+                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
+                            </svg>
+                          </IconLink>
+                        )}
+
+                        {project.demoLink && (
+                          <IconLink
+                            href={project.demoLink}
+                            title="Watch demo"
+                            accent={accent}
+                            isRowHovered={isHovered}
+                          >
+                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                          </IconLink>
+                        )}
+
+                        <IconLink
+                          href={project.webLink || "#"}
+                          title="Visit project"
+                          accent={accent}
+                          isRowHovered={isHovered}
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </IconLink>
                       </div>
                     </div>
                   </div>
