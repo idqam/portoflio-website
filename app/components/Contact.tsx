@@ -96,7 +96,7 @@ export default function Contact() {
 
           <div className="mb-8">
             <p className="font-sans text-base text-[var(--foreground)] leading-relaxed mb-2">
-              I'm always open to discussing new opportunities, collaborations,
+              I&apos;m always open to discussing new opportunities, collaborations,
               or just having a thoughtful conversation about technology and
               design.
             </p>
