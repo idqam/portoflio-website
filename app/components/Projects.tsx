@@ -1,6 +1,32 @@
 "use client";
+import { useState, type ReactNode } from "react";
 
-import { useState } from "react";
+function IconLink({
+  href,
+  title,
+  accent,
+  isRowHovered,
+  children,
+}: {
+  href: string;
+  title: string;
+  accent: string;
+  isRowHovered: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 hover:ring-1 hover:ring-[var(--row-accent)]"
+      style={{ color: isRowHovered ? accent : "var(--text-muted)" }}
+      title={title}
+    >
+      {children}
+    </a>
+  );
+}
 
 interface Project {
   id: string;
@@ -13,15 +39,37 @@ interface Project {
   accent: "water" | "amber" | "lavender";
   webLink?: string;
   githubLink?: string;
+  demoLink?: string;
 }
 
 const projects: Project[] = [
+  {
+    id: "nutriledger",
+    title: "NutriLedger",
+    subtitle: "Mobile-First Nutrition Intelligence App",
+    description:
+      "Nutrition tracking SaaS built mobile-first with natural language food logging, LLM-powered insight engine, and deep macro/micronutrient trend analytics. Features barcode scanning, NLP text parsing via LLM extraction, self-hosted USDA + Open Food Facts food database with pg_trgm fuzzy search, weight tracking with goal projection, and a nightly AI insights pipeline surfacing personalized dietary patterns. Monetized via RevenueCat subscriptions with a free tier and premium plan.",
+    year: "2026",
+    skills: [
+      "React Native",
+      "Expo",
+      "FastAPI",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "LLM APIs",
+    ],
+    status: "ongoing",
+    accent: "lavender",
+    webLink: "https://nutriledger.app",
+    githubLink: "https://github.com/idqam/nutriledger",
+  },
   {
     id: "linkforge",
     title: "LinkForge",
     subtitle: "URL Shortener & Infrastructure Showcase",
     description:
-      "URL shortener built in Go with Redis caching, rate limiting, and structured observability — containerized with Docker builds, deployed to Kubernetes with HPA, and monitored end-to-end with Prometheus, Grafana, and distributed tracing.",
+      "URL shortener built in Go with Redis caching, rate limiting, and structured observability — containerized with Docker builds, deployed to Kubernetes with HPA, and monitored end-to-end with Prometheus, Grafana, and distributed tracing. Include full-stack web app capabilites with auth flow and user specific tooling for signed vs anon usage.",
     year: "2026",
     skills: [
       "Go",
@@ -36,19 +84,21 @@ const projects: Project[] = [
     accent: "water",
     webLink: "https://linkpulse-chi.vercel.app/",
     githubLink: "https://github.com/idqam/url-shortener",
+    demoLink: "https://youtube.com/demo-placeholder",
   },
   {
     id: "ecosystem-simulation",
     title: "EcoSim",
     subtitle: "Event-Driven Polyglot Distributed Monolith",
     description:
-      "Event-driven distributed monolith powering a real-time agent simulation across 11 services in Go, Rust, Python, and TypeScript. Go handles the core tick loop with goroutine-per-organism concurrency, RabbitMQ event sourcing, and a WebSocket hub for live streaming. Rust services own performance-critical paths — genetic crossover, quadtree spatial indexing, and A* pathfinding. CQRS separates write-side domain events from materialized read models in PostgreSQL, with Prometheus/Grafana observability across the stack.",
+      "Event-driven distributed monolith powering a real-time ecosystem simulation implemented across 11 services in Go, Rust, Python, and TypeScript. Go handles the core tick loop with goroutine-per-organism concurrency, RabbitMQ event sourcing, and a WebSocket hub for live streaming. Rust services own performance-critical paths — genetic crossover, quadtree spatial indexing, and A* pathfinding. CQRS separates write-side domain events from materialized read models in PostgreSQL, React based admin panel, all with Prometheus/Grafana observability across the stack.",
     year: "2026",
     skills: [
       "Go",
       "Rust",
       "Python",
       "TypeScript",
+      "React",
       "RabbitMQ",
       "Redis",
       "PostgreSQL",
@@ -60,13 +110,14 @@ const projects: Project[] = [
     accent: "amber",
     webLink: "/projects/ecosystem-simulation",
     githubLink: "https://github.com/idqam/EcoSim",
+    demoLink: "https://youtube.com/demo-placeholder",
   },
   {
     id: "queueflow",
     title: "QueueFlow",
     subtitle: "Distributed Task Queue & Autoscaling",
     description:
-      "Distributed task queue built from scratch in Go with Kafka-backed priority lanes, exponential retry, dead letter queue, and a custom Kubernetes autoscaler that scales worker pods based on consumer lag rather than CPU.",
+      "Distributed task queue built from scratch in Go with Kafka-backed priority lanes, exponential retry, dead letter queue, and a custom Kubernetes autoscaler that scales worker pods based on consumer lag rather than CPU. Obervability and logging via Grafana, Promethues, Loki. Production grade with CI/CD pipelines. ",
     year: "2026",
     skills: [
       "Go",
@@ -81,6 +132,7 @@ const projects: Project[] = [
     accent: "water",
     webLink: "/projects/queueflow",
     githubLink: "https://github.com/idqam/queueflow",
+    demoLink: "https://youtube.com/demo-placeholder",
   },
   {
     id: "portfolio",
@@ -90,10 +142,11 @@ const projects: Project[] = [
       "This site. A Winter Study aesthetic emphasizing readability, quiet sophistication, and scholarly warmth. Built as an expression of design philosophy as much as technical capability.",
     year: "2025",
     skills: ["Next.js", "Tailwind", "TypeScript", "Framer Motion"],
-    status: "ongoing",
+    status: "completed",
     accent: "amber",
     webLink: "/projects/portfolio",
     githubLink: "",
+    demoLink: "https://youtube.com/demo-placeholder",
   },
 ];
 
@@ -187,26 +240,37 @@ export default function ProjectsEditorial() {
               const indexNum = String(globalIndex + 1).padStart(2, "0");
 
               return (
-                <a
+                <div
                   key={project.id}
-                  href={project.webLink}
-                  className="group relative bg-[var(--background)] border transition-all duration-300 block overflow-hidden"
-                  style={{
-                    flex: isHovered
-                      ? "2.5 1 0"
-                      : isCompressed
-                        ? "0.5 1 0"
-                        : "1 1 0",
-                    minHeight: 0,
-                    borderColor: isHovered ? accent : "var(--border-pencil)",
-                    transform: isHovered
-                      ? "translateX(8px) scale(1.01)"
-                      : "translateX(0) scale(1)",
-                    boxShadow: isHovered
-                      ? `0 4px 24px -4px ${accent}30, -4px 0 0 0 ${accent}`
-                      : "none",
-                    zIndex: isHovered ? 10 : 1,
+                  onClick={(e) => {
+                    if ((e.target as HTMLElement).closest("a")) return;
+                    project.webLink &&
+                      window.open(
+                        project.webLink,
+                        "_blank",
+                        "noopener,noreferrer",
+                      );
                   }}
+                  className="group relative bg-[var(--background)] border transition-all duration-300 block overflow-hidden cursor-pointer"
+                  style={
+                    {
+                      "--row-accent": accent,
+                      flex: isHovered
+                        ? "2.5 1 0"
+                        : isCompressed
+                          ? "0.5 1 0"
+                          : "1 1 0",
+                      minHeight: 0,
+                      borderColor: isHovered ? accent : "var(--border-pencil)",
+                      transform: isHovered
+                        ? "translateX(8px) scale(1.01)"
+                        : "translateX(0) scale(1)",
+                      boxShadow: isHovered
+                        ? `0 4px 24px -4px ${accent}30, -4px 0 0 0 ${accent}`
+                        : "none",
+                      zIndex: isHovered ? 10 : 1,
+                    } as React.CSSProperties
+                  }
                   onMouseEnter={() => setHoveredId(project.id)}
                   onMouseLeave={() => setHoveredId(null)}
                 >
@@ -268,7 +332,7 @@ export default function ProjectsEditorial() {
 
                           <div className="flex items-center gap-2 shrink-0">
                             <span
-                              className="hidden sm:inline-block font-mono text-[9px] tracking-wide px-2 py-0.5 border transition-colors duration-300"
+                              className="hidden sm:inline-block font-mono text-[9px] tracking-wide w-20 text-center py-0.5 border transition-colors duration-300"
                               style={{
                                 borderColor: accent,
                                 color:
@@ -280,37 +344,57 @@ export default function ProjectsEditorial() {
                                     ? `${accent}10`
                                     : "transparent",
                               }}
+                              title="project status"
                             >
                               {statusLabels[project.status]}
                             </span>
 
                             {project.githubLink && (
-                              <button
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  e.stopPropagation();
-                                  window.open(project.githubLink, "_blank", "noopener,noreferrer");
-                                }}
-                                className="w-5 h-5 flex items-center justify-center transition-colors duration-300"
-                                style={{
-                                  color: isHovered ? accent : "var(--text-muted)",
-                                }}
+                              <IconLink
+                                href={project.githubLink}
                                 title="GitHub repository"
+                                accent={accent}
+                                isRowHovered={isHovered}
                               >
-                                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                                <svg
+                                  className="w-5 h-5"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                >
                                   <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
                                 </svg>
-                              </button>
+                              </IconLink>
                             )}
 
-                            <div
-                              className="w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300"
+                            {project.demoLink && (
+                              <IconLink
+                                href={project.demoLink}
+                                title="Watch demo"
+                                accent={accent}
+                                isRowHovered={isHovered}
+                              >
+                                <svg
+                                  className="w-5 h-5"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                >
+                                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                              </IconLink>
+                            )}
+
+                            <a
+                              href={project.webLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300 hover:ring-1 hover:ring-[var(--row-accent)]"
                               style={{
                                 backgroundColor: isHovered
                                   ? accent
                                   : "transparent",
                                 border: `1px solid ${isHovered ? accent : "var(--border-pencil)"}`,
                               }}
+                              title="website link"
                             >
                               <svg
                                 className="w-2.5 h-2.5 transition-all duration-300"
@@ -333,7 +417,7 @@ export default function ProjectsEditorial() {
                                   d="M9 5l7 7-7 7"
                                 />
                               </svg>
-                            </div>
+                            </a>
                           </div>
                         </div>
 
@@ -407,7 +491,7 @@ export default function ProjectsEditorial() {
                       style={{ opacity: isHovered ? 1 : 0 }}
                     >
                       <div
-                        className="mx-4 mb-4 pt-3 border-t"
+                        className="mx-4 mb-4 pt-3 pb-3 border-t"
                         style={{ borderColor: `${accent}40` }}
                       >
                         <p className="font-sans text-xs text-[var(--text-muted)] leading-relaxed">
@@ -419,7 +503,10 @@ export default function ProjectsEditorial() {
 
                   <div
                     className="absolute inset-0 flex items-center gap-4 px-5 transition-opacity duration-200"
-                    style={{ opacity: isCompressed ? 1 : 0 }}
+                    style={{
+                      opacity: isCompressed ? 1 : 0,
+                      pointerEvents: isCompressed ? "auto" : "none",
+                    }}
                   >
                     <span
                       className="font-serif text-lg shrink-0 w-8 text-center"
@@ -441,7 +528,7 @@ export default function ProjectsEditorial() {
                       {project.year}
                     </span>
                   </div>
-                </a>
+                </div>
               );
             })}
           </div>

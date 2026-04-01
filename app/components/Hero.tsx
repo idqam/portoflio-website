@@ -1,3 +1,22 @@
+function SectionLabel({
+  children,
+  accent = "water",
+}: {
+  children: React.ReactNode;
+  accent?: "water" | "lavender";
+}) {
+  const color =
+    accent === "lavender" ? "var(--accent-lavender)" : "var(--accent-water)";
+  return (
+    <h3
+      className="font-mono text-sm tracking-widest uppercase mb-3"
+      style={{ color }}
+    >
+      {children}
+    </h3>
+  );
+}
+
 export default function Hero() {
   return (
     <div className="flex-1 flex flex-col justify-center w-full max-w-6xl mx-auto px-6 md:px-16 py-12">
@@ -36,21 +55,17 @@ export default function Hero() {
         <aside className="flex gap-6 lg:gap-10 w-full lg:w-auto">
           <div className="flex flex-col gap-6 md:gap-8 lg:pl-8 lg:border-l lg:border-[var(--border-pencil)]">
             <div>
-              <h3 className="font-mono text-basetracking-widest text-[var(--accent-water)] uppercase mb-2">
-                Current Role
-              </h3>
+              <SectionLabel>Current Role</SectionLabel>
               <p className="font-serif text-lg text-[var(--foreground)]">
                 Software Engineer @ Baton
               </p>
-              <p className="font-sans text-base text-[var(--text-muted)] mt-1">
-                Product & Production Team
+              <p className="font-sans text-sm text-[var(--text-muted)] mt-1">
+                Platform & Production Team
               </p>
             </div>
 
             <div>
-              <h3 className="font-mono text-base tracking-widest text-[var(--accent-water)] uppercase mb-2">
-                Primary Stack
-              </h3>
+              <SectionLabel>Primary Stack</SectionLabel>
               <div className="flex flex-wrap gap-2">
                 {["Java", "Go", "TypeScript", "Python"].map((tech) => (
                   <span
@@ -64,9 +79,7 @@ export default function Hero() {
             </div>
 
             <div>
-              <h3 className="font-mono text-base tracking-widest text-[var(--accent-water)] uppercase mb-2">
-                Frameworks
-              </h3>
+              <SectionLabel>Frameworks</SectionLabel>
               <div className="flex flex-wrap gap-2">
                 {["Spring Boot", "Next.JS", "React", "FastAPI"].map((tech) => (
                   <span
@@ -80,23 +93,19 @@ export default function Hero() {
             </div>
 
             <div>
-              <h3 className="font-mono text-base tracking-widest text-[var(--accent-water)] uppercase mb-2">
-                Currently Exploring
-              </h3>
+              <SectionLabel>Currently Exploring</SectionLabel>
               <div className="flex flex-col ml-4">
                 <ul className="font-sans text-sm list-disc">
-                  <li> Distributed Systems technologies and theory</li>
+                  <li> Distributed systems technologies and theory</li>
                   <li>Observability tools and methodology</li>
-                  <li>Event-driven Architecture</li>
+                  <li>Event-driven architecture</li>
                   <li>DDD via simulations</li>
                 </ul>
               </div>
             </div>
 
             <div>
-              <h3 className="font-mono text-base tracking-widest text-[var(--accent-lavender)] uppercase mb-2">
-                Learning for Joy
-              </h3>
+              <SectionLabel accent="lavender">Learning for Joy</SectionLabel>
               <p className="font-sans text-[var(--text-muted)] text-sm">
                 Rust · Golang{" "}
               </p>
