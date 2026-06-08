@@ -23,7 +23,7 @@ export default function Hero() {
       <section className="flex flex-col lg:flex-row justify-between items-start w-full gap-12 lg:gap-16">
         <div className="flex flex-col w-full lg:max-w-xl">
           <p className="font-mono text-sm md:text-base tracking-widest text-[var(--accent-water)] mb-4">
-            Software Engineer & Creator
+            Software Engineer
           </p>
 
           <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl leading-[1.1] tracking-tight text-[var(--foreground)] md:whitespace-nowrap">
@@ -31,9 +31,8 @@ export default function Hero() {
           </h1>
 
           <p className="font-sans mt-6 md:mt-8 text-[var(--text-muted)] text-base md:text-lg leading-relaxed">
-            Backend-focused software engineer who enjoys building systems that
-            scale, exploring programmatic tools, functional languages, and
-            working in interesting problem domains.
+            Backend-focused software engineer building streaming and real-time data systems that
+            are realiable, fault-tolerant, and scalable. 
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6 md:mt-8">
@@ -60,14 +59,14 @@ export default function Hero() {
                 Software Engineer @ Baton
               </p>
               <p className="font-sans text-sm text-[var(--text-muted)] mt-1">
-                Platform & Production Team
+                Data Platform Team
               </p>
             </div>
 
             <div>
-              <SectionLabel>Primary Stack</SectionLabel>
+              <SectionLabel>Primary Language Stack</SectionLabel>
               <div className="flex flex-wrap gap-2">
-                {["Java", "Go", "TypeScript", "Python"].map((tech) => (
+                {["Java", "TypeScript", "Python"].map((tech) => (
                   <span
                     key={tech}
                     className="font-mono text-sm px-3 py-1 bg-[var(--secondary-bg)] text-[var(--foreground)] rounded-sm"
@@ -96,18 +95,18 @@ export default function Hero() {
               <SectionLabel>Currently Exploring</SectionLabel>
               <div className="flex flex-col ml-4">
                 <ul className="font-sans text-sm list-disc">
-                  <li> Distributed systems technologies and theory</li>
+                  <li>Distributed systems theory</li>
+                  <li>Data Platform ecosystems</li>
                   <li>Observability tools and methodology</li>
-                  <li>Event-driven architecture</li>
-                  <li>DDD via simulations</li>
+                  <li>Event-driven architecture and Streaming applications</li>
                 </ul>
               </div>
             </div>
 
             <div>
-              <SectionLabel accent="lavender">Learning for Joy</SectionLabel>
+              <SectionLabel accent="lavender">Learning for Curiosity</SectionLabel>
               <p className="font-sans text-[var(--text-muted)] text-sm">
-                Rust · Golang{" "}
+                Elixir · Golang{" "}
               </p>
             </div>
           </div>
