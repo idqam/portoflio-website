@@ -101,7 +101,7 @@ export default function Contact() {
               design.
             </p>
             <p className="font-mono text-xs text-[var(--text-muted)] tracking-wide">
-              FORM NOT YET WORKING - PLEASE REACH OUT VIA EMAIL INSTEAD
+              FORM NOT YET WORKING - PLEASE REACH OUT VIA EMAIL INSTEAD 
               <a
                 href="mailto:villarealowen1@gmail.com"
                 className="text-[var(--accent-water)] hover:text-[var(--accent-lavender)] transition-colors duration-300"
