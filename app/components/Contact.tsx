@@ -100,7 +100,7 @@ export default function Contact() {
               or just having a thoughtful conversation about technology and
               design.
             </p>
-            <p className="font-mono text-red text-xs text-[var(--text-muted)] tracking-wide">
+            <p className="font-mono text-xs text-[var(--text-muted)] tracking-wide">
               FORM NOT YET WORKING - PLEASE REACH OUT VIA EMAIL INSTEAD
               <a
                 href="mailto:villarealowen1@gmail.com"
