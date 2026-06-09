@@ -41,11 +41,11 @@ const experiences: Experience[] = [
     id: "audible-swe",
     yearStart: "2023",
     yearEnd: "2024",
-    title: "SWE - Analytics Team",
+    title: "SWE - Platform Team",
     company: "Audible",
     description:
-      "Implemented backend services in java spring boot powering data-driven features and UI",
-    highlights: ["React", "Data Analytics", "Spring Boot"],
+      "Full-time software engineer role on the Data Platform team. Building full-stack features and services to support data analytics and visualisation to empower rights holders via data driven decisions.",
+    highlights: ["React", "Data Analytics", "Spring Boot", "AWS", "Java"],
     type: "fulltime",
   },
   {
@@ -60,14 +60,14 @@ const experiences: Experience[] = [
     type: "personal",
   },
   {
-    id: "baton",
+    id: "Baton",
     yearStart: "Oct 2025",
     yearEnd: "Present",
     title: "Software Engineer",
     company: "Baton",
     description:
-      "Intersection of SRE, product engineering, and implementing features in a distrubuted system for product and system stability",
-    highlights: ["Distributed Systems", "Microservices", "SRE"],
+      "Working within the intersection of Data Platform and Infrastructure team to build scalable, reliable, and user-friendly data systems to power internal analytics and customer-facing features. Focused on backend development, distributed & streaming systems, and SRE practices.",
+    highlights: ["Distributed Systems", "Streaming", "Flink", "Kafka", "AWS"],
     type: "fulltime",
   },
   {

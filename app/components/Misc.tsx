@@ -23,31 +23,6 @@ const categories: MiscCategory[] = [
     label: "Writing",
     accent: "water",
     items: [
-      {
-        title: "On Distributed Systems & Philosophy",
-        description:
-          "Exploring parallels between system design and epistemology",
-        link: "/writing/distributed-philosophy",
-        date: "Dec 2025",
-      },
-      {
-        title: "The Art of Debugging",
-        description: "A meditation on patience and systematic thinking",
-        link: "/writing/debugging-meditation",
-        date: "Nov 2025",
-      },
-      {
-        title: "Learning in Public",
-        description: "Why I document my journey",
-        link: "/writing/learning-public",
-        date: "Oct 2025",
-      },
-      {
-        title: "Winter & Productivity",
-        description: "Finding focus in the cold months",
-        link: "/writing/winter-productivity",
-        date: "Sep 2025",
-      },
     ],
   },
   {
@@ -58,20 +33,20 @@ const categories: MiscCategory[] = [
       {
         title: "YouTube",
         description: "Technical tutorials & learning vlogs",
-        link: "https://youtube.com/@owenvillareal",
-        date: "Ongoing",
+        link: "COMING SOON",
+        date: "COMING SOON",
       },
       {
         title: "TikTok",
         description: "Short-form coding tips",
-        link: "https://tiktok.com/@owenvillareal",
-        date: "Ongoing",
+        link: "COMING SOON",
+        date: "COMING SOON",
       },
       {
         title: "Twitter/X",
         description: "Thoughts & threads",
-        link: "https://x.com/owenvillareal",
-        date: "Ongoing",
+        link: "COMING SOON",
+        date: "COMING SOON",
       },
     ],
   },
@@ -80,30 +55,7 @@ const categories: MiscCategory[] = [
     label: "Reading",
     accent: "lavender",
     items: [
-      {
-        title: "Designing Data-Intensive Applications",
-        description: "Kleppmann — Currently re-reading",
-        link: "#",
-        date: "Current",
-      },
-      {
-        title: "The Art of Doing Science and Engineering",
-        description: "Hamming — On taste and judgment",
-        link: "#",
-        date: "2025",
-      },
-      {
-        title: "Introduction to Algorithms",
-        description: "The canonical reference",
-        link: "#",
-        date: "2024",
-      },
-      {
-        title: "The Phenomenology of Spirit",
-        description: "Hegel — Slowly, carefully",
-        link: "#",
-        date: "Ongoing",
-      },
+      
     ],
   },
   {
@@ -111,24 +63,7 @@ const categories: MiscCategory[] = [
     label: "Learning",
     accent: "mint",
     items: [
-      {
-        title: "Mandarin Chinese",
-        description: "HSK 3 level, focusing on reading",
-        link: "#",
-        date: "2024—",
-      },
-      {
-        title: "Oil Painting",
-        description: "Still life & color theory",
-        link: "#",
-        date: "2025—",
-      },
-      {
-        title: "Piano",
-        description: "Classical pieces, Chopin nocturnes",
-        link: "#",
-        date: "Paused",
-      },
+
     ],
   },
 ];
@@ -172,7 +107,7 @@ export default function Misc() {
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-6 mb-12 pt-12 relative z-20">
         <div className="flex items-center gap-4 text-foreground opacity-80">
           <div className="flex-1 w-12 h-px bg-pencil" />
-          <h2 className="font-serif text-3xl">Misc</h2>
+          <h2 className="font-serif text-3xl">Misc -- COMING SOON SECTION</h2>
           <div className="flex-1 w-12 h-px bg-pencil" />
         </div>
 
